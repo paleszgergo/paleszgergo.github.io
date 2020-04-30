@@ -71,3 +71,20 @@ $('.arrow-left').click(() => {
   }
   loadPhoto(currentPhoto);
 });
+
+let data = [data0, data1, data2, data3, data4, data5, data6, data7];
+
+data.forEach((item, index) => {
+  $('#thumbnails1').append('<img class="thumb" src="' + item.photo + '">');
+  $('.thumb').click((event) => {
+    let indexClicked = $('#photo').attr('src', item.photo);
+                       $('#photoTitle').text(item.photoTitle);
+                       $('#photoDescription').text(item.photoDescription);
+        // indexClicked is now a string! if you need it as a number you have to change it
+    // because for example "1" + 1 is going to be "11" and not 2
+    let numberIndex = parseInt(indexClicked);
+    // now numberIndex is a number
+    $('#photo').attr('src', data.photo[indexClicked]);
+  });
+});
+
